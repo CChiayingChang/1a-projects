@@ -24,7 +24,7 @@ double *geometric( double a, double ratio, std::size_t cap ) {
     return array;
 }
 
-double *cross_correlation(double array0[], std::size_t cap0, double array1[], std::size_t cap1) {
+double *cross_correlation(double array0[], std::size_t cap0, double array1[], std::size_t cap1) {//adds array[i]*array2[j] to entry i*j in new array
     assert (cap0+cap1>=1);
     double *array {new double [cap0+cap1-1] {0}};
     for (std::size_t i {0}; i<cap0; i++) {
@@ -35,10 +35,10 @@ double *cross_correlation(double array0[], std::size_t cap0, double array1[], st
     return array;
 }
 
-std::size_t shift_duplicates( int array[], std::size_t capacity ) {
+std::size_t shift_duplicates( int array[], std::size_t capacity ) {//shifts unique entries to front and not unique to back in any order
     std::size_t unique {};
     std::size_t start {0};
-    for (std::size_t i{0}; i<capacity; i++) {
+    for (std::size_t i{0}; i<capacity; i++) {//determines if the entry is unique or nots
         bool unique_or_not {true};
         for (std::size_t k {i}; k>0; k--) {
             if (array[i]==array[k-1]) {
@@ -46,7 +46,7 @@ std::size_t shift_duplicates( int array[], std::size_t capacity ) {
                 break;
             }
         }
-        if (unique_or_not) {
+        if (unique_or_not) {//if it's unique swap it with the start entry
             unique++;
             int temp_unique {array[i]};
             int temp_start {array[start]};
@@ -58,7 +58,7 @@ std::size_t shift_duplicates( int array[], std::size_t capacity ) {
         return unique;
 }
 
-void deallocate( double *&ptr, bool is_array, std::size_t capacity ) {
+void deallocate( double *&ptr, bool is_array, std::size_t capacity ) {//deallocates the array
     if (ptr!=nullptr) {
         if (is_array) {
             for (std::size_t i {0}; i<capacity; i++) {

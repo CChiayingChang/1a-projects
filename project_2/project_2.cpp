@@ -53,7 +53,7 @@ void pattern (unsigned int n) {
     }
 }
 
-unsigned int log10 (unsigned int n) {
+unsigned int log10 (unsigned int n) {//returns the largest pwoer of 10 that is less than or equal to n
     assert (n!=0);
     unsigned int m {0};
     while (n>=10) {
